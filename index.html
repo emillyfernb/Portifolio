@@ -1,0 +1,1223 @@
+<!DOCTYPE html>
+<html lang="pt-BR" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Portfólio | Emilly Fernandes - Desenvolvedora</title>
+  <meta name="description" content="Portfólio de Emilly Fernandes, estudante de Desenvolvimento de Sistemas com habilidades em front-end e back-end.">
+  
+  <!-- Favicon -->
+  <link rel="icon" href="bard-line.svg" type="image/svg+xml">
+  
+  <!-- Open Graph / Social Media Meta Tags -->
+  <meta property="og:title" content="Portfólio | Emilly Fernandes - Desenvolvedora">
+  <meta property="og:description" content="Portfólio de Emilly Fernandes, estudante de Desenvolvimento de Sistemas com habilidades em front-end e back-end.">
+  <meta property="og:type" content="website">
+  
+  <!-- Configuração do tema -->
+  <script>
+    if (localStorage.getItem('color-theme') === 'dark' || (!('color-theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+      document.documentElement.classList.add('dark');
+    } else {
+      document.documentElement.classList.remove('dark');
+    }
+  </script>
+  
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            primary: {
+              "50":"#eff6ff",
+              "100":"#dbeafe",
+              "200":"#bfdbfe",
+              "300":"#93c5fd",
+              "400":"#60a5fa",
+              "500":"#3b82f6",
+              "600":"#2563eb",
+              "700":"#1d4ed8",
+              "800":"#1e40af",
+              "900":"#1e3a8a"
+            }
+          },
+          animation: {
+            'float': 'float 6s ease-in-out infinite',
+            'fade-in': 'fadeIn 1s ease-in',
+            'slide-up': 'slideUp 0.5s ease-out'
+          },
+          keyframes: {
+            float: {
+              '0%, 100%': { transform: 'translateY(0)' },
+              '50%': { transform: 'translateY(-20px)' }
+            },
+            fadeIn: {
+              '0%': { opacity: '0' },
+              '100%': { opacity: '1' }
+            },
+            slideUp: {
+              '0%': { transform: 'translateY(20px)', opacity: '0' },
+              '100%': { transform: 'translateY(0)', opacity: '1' }
+            }
+          }
+        }
+      }
+    }
+  </script>
+
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  
+  <!-- Flowbite CSS -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.3.0/flowbite.min.css" rel="stylesheet">
+  
+  <!-- Custom Styles -->
+  <style>
+    :root {
+      --primary: #3b82f6;
+      --primary-dark: #2563eb;
+      --secondary: #10b981;
+      --secondary-dark: #059669;
+    }
+    
+    body {
+      padding-top: 80px;
+      background-color: #f9fafb;
+      color: #1f2937;
+      transition: background-color 0.3s ease, color 0.3s ease;
+    }
+    
+    body.dark {
+      background-color: #111827;
+      color: #f3f4f6;
+    }
+    
+    /* Hero Section */
+    .hero {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 80px 5%;
+      gap: 40px;
+      min-height: calc(100vh - 80px);
+    }
+    
+    @media (max-width: 768px) {
+      .hero {
+        flex-direction: column;
+        text-align: center;
+        padding: 60px 5%;
+      }
+    }
+    
+    .hero-text {
+      flex: 1;
+      max-width: 600px;
+      animation: fadeIn 1s ease-in, slideUp 0.8s ease-out;
+    }
+    
+    .hero-image {
+      flex: 1;
+      max-width: 45%;
+      height: auto;
+      filter: drop-shadow(0 10px 15px rgba(59, 130, 246, 0.3));
+      transition: transform 0.3s ease;
+      animation: float 6s ease-in-out infinite;
+    }
+    
+    @media (max-width: 768px) {
+      .hero-image {
+        max-width: 80%;
+        margin-top: 40px;
+      }
+    }
+    
+    .hero-image:hover {
+      animation: float 3s ease-in-out infinite;
+    }
+    
+    /* Projects Section */
+    .projetos-container {
+      display: flex;
+      justify-content: center;
+      gap: 30px;
+      flex-wrap: wrap;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 30px;
+    }
+    
+    .projeto-card {
+      width: 100%;
+      max-width: 350px;
+      background-color: white;
+      border-radius: 12px;
+      overflow: hidden;
+      transition: all 0.3s ease;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      position: relative;
+    }
+    
+    .dark .projeto-card {
+      background-color: #1f2937;
+      border: 1px solid #374151;
+    }
+    
+    .projeto-card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+    }
+    
+    .projeto-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 5px;
+      background: linear-gradient(90deg, var(--primary), var(--secondary));
+      z-index: 1;
+    }
+    
+    .projeto-card img {
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+      border-radius: 0.375rem 0.375rem 0 0;
+      transition: transform 0.3s ease;
+    }
+    
+    .projeto-card:hover img {
+      transform: scale(1.05);
+    }
+    
+    .projeto-content {
+      padding: 20px;
+    }
+    
+    .projeto-title {
+      font-size: 1.25rem;
+      font-weight: 600;
+      color: #1e293b;
+      margin-bottom: 12px;
+    }
+    
+    .dark .projeto-title {
+      color: white;
+    }
+    
+    .projeto-desc {
+      font-size: 0.95rem;
+      color: #64748b;
+      margin-bottom: 15px;
+    }
+    
+    .dark .projeto-desc {
+      color: #e2e8f0;
+    }
+    
+    .projeto-link {
+      display: inline-flex;
+      align-items: center;
+      color: var(--primary);
+      font-weight: 500;
+      transition: color 0.3s;
+    }
+    
+    .dark .projeto-link {
+      color: #60a5fa;
+    }
+    
+    .projeto-link:hover {
+      color: var(--primary-dark);
+    }
+    
+    .projeto-link i {
+      margin-left: 5px;
+      transition: transform 0.3s;
+    }
+    
+    .projeto-link:hover i {
+      transform: translateX(3px);
+    }
+    
+    /* Navbar */
+    nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      z-index: 1000;
+      background-color: #f9fafb;
+      padding: 15px 0;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      transition: all 0.3s ease;
+    }
+    
+    .dark nav {
+      background-color: #111827;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+    }
+    
+    nav.scrolled {
+      padding: 10px 0;
+      backdrop-filter: blur(10px);
+      background-color: rgba(249, 250, 251, 0.9);
+    }
+    
+    .dark nav.scrolled {
+      background-color: rgba(17, 24, 39, 0.9);
+    }
+    
+    nav .flex.items-center {
+      gap: 0.75rem;
+    }
+    
+    nav .text-xl {
+      font-size: 1.25rem;
+      line-height: 1.75rem;
+    }
+    
+    #navbar-default ul {
+      align-items: center;
+    }
+    
+    #navbar-default li:last-child {
+      display: flex;
+      align-items: center;
+    }
+    
+    .nav-link {
+      position: relative;
+      padding: 8px 0;
+      transition: color 0.3s;
+    }
+    
+    .nav-link::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 0;
+      height: 2px;
+      background: linear-gradient(90deg, var(--primary), var(--secondary));
+      transition: width 0.3s ease;
+    }
+    
+    .nav-link:hover::after {
+      width: 100%;
+    }
+    
+    .nav-link.active::after {
+      width: 100%;
+    }
+    
+    /* Logo SVG */
+    nav .logo-svg {
+      filter: invert(16%) sepia(12%) saturate(1423%) hue-rotate(179deg) brightness(93%) contrast(91%);
+      transition: transform 0.3s ease;
+    }
+    
+    nav .logo-svg:hover {
+      transform: rotate(15deg);
+    }
+    
+    .dark nav .logo-svg {
+      filter: invert(100%) sepia(100%) saturate(0%) hue-rotate(288deg) brightness(102%) contrast(102%);
+    }
+    
+    /* Carrossel */
+    .carousel-container {
+      position: relative;
+      width: 100%;
+      max-width: 800px;
+      margin: 0 auto;
+      border-radius: 0.5rem;
+      overflow: hidden;
+      box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+    }
+    
+    .carousel-slide {
+      display: none;
+      width: 100%;
+      height: 450px;
+      background-color: #f3f4f6;
+      position: relative;
+    }
+    
+    .dark .carousel-slide {
+      background-color: #1e293b;
+    }
+    
+    .carousel-slide.active {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    
+    .carousel-slide img {
+      max-width: 100%;
+      max-height: 100%;
+      object-fit: contain;
+    }
+    
+    .carousel-indicators {
+      display: flex;
+      justify-content: center;
+      gap: 0.5rem;
+      margin-top: 1rem;
+    }
+    
+    .carousel-indicator {
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      background-color: rgba(156, 163, 175, 0.5);
+      cursor: pointer;
+      transition: all 0.3s;
+    }
+    
+    .carousel-indicator.active {
+      background-color: var(--primary);
+      transform: scale(1.2);
+    }
+    
+    .dark .carousel-indicator {
+      background-color: rgba(107, 114, 128, 0.5);
+    }
+    
+    .dark .carousel-indicator.active {
+      background-color: var(--primary);
+    }
+    
+    .carousel-control {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      z-index: 30;
+      width: 48px;
+      height: 48px;
+      background-color: rgba(255, 255, 255, 0.9);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+      color: #1f2937;
+    }
+    
+    .dark .carousel-control {
+      background-color: rgba(17, 24, 39, 0.9);
+      color: #f3f4f6;
+    }
+    
+    .carousel-control:hover {
+      background-color: white;
+      transform: translateY(-50%) scale(1.1);
+    }
+    
+    .dark .carousel-control:hover {
+      background-color: #1f2937;
+    }
+    
+    .carousel-prev {
+      left: 16px;
+    }
+    
+    .carousel-next {
+      right: 16px;
+    }
+    
+    /* Contact Form */
+    .contact-form {
+      background-color: white;
+      border-radius: 12px;
+      padding: 2rem;
+      box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+    }
+    
+    .dark .contact-form {
+      background-color: #1f2937;
+    }
+    
+    .form-input {
+      width: 100%;
+      padding: 0.75rem 1rem;
+      border: 1px solid #e5e7eb;
+      border-radius: 0.5rem;
+      transition: all 0.3s;
+      background-color: #f9fafb;
+    }
+    
+    .dark .form-input {
+      background-color: #374151;
+      border-color: #4b5563;
+      color: #f3f4f6;
+    }
+    
+    .form-input:focus {
+      outline: none;
+      border-color: var(--primary);
+      box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.2);
+    }
+    
+    .dark .form-input:focus {
+      box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.5);
+    }
+    
+    .submit-btn {
+      background: linear-gradient(135deg, var(--primary), var(--secondary));
+      color: white;
+      font-weight: 600;
+      padding: 0.75rem 1.5rem;
+      border-radius: 0.5rem;
+      transition: all 0.3s;
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+    }
+    
+    .submit-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+    }
+    
+    /* Social Icons */
+    .social-icon {
+      width: 40px;
+      height: 40px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 50%;
+      background-color: #e5e7eb;
+      color: #4b5563;
+      transition: all 0.3s;
+    }
+    
+    .dark .social-icon {
+      background-color: #374151;
+      color: #f3f4f6;
+    }
+    
+    .social-icon:hover {
+      transform: translateY(-3px);
+      color: white;
+    }
+    
+    .social-icon.linkedin:hover {
+      background-color: #0a66c2;
+    }
+    
+    .social-icon.github:hover {
+      background-color: #333;
+    }
+    
+    /* Section Headings */
+    .section-heading {
+      position: relative;
+      display: inline-block;
+      margin-bottom: 3rem;
+    }
+    
+    .section-heading::after {
+      content: '';
+      position: absolute;
+      bottom: -10px;
+      left: 0;
+      width: 50%;
+      height: 4px;
+      background: linear-gradient(90deg, var(--primary), var(--secondary));
+      border-radius: 2px;
+    }
+    
+    /* Divider */
+    .divider {
+      height: 1px;
+      background: linear-gradient(90deg, transparent, rgba(59, 130, 246, 0.5), transparent);
+      margin: 4rem auto;
+      max-width: 200px;
+    }
+    
+    .dark .divider {
+      background: linear-gradient(90deg, transparent, rgba(59, 130, 246, 0.8), transparent);
+    }
+    
+    /* Back to Top Button */
+    .back-to-top {
+      position: fixed;
+      bottom: 30px;
+      right: 30px;
+      width: 50px;
+      height: 50px;
+      background-color: var(--primary);
+      color: white;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      opacity: 0;
+      visibility: hidden;
+      transition: all 0.3s;
+      z-index: 999;
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+    }
+    
+    .back-to-top.visible {
+      opacity: 1;
+      visibility: visible;
+    }
+    
+    .back-to-top:hover {
+      background-color: var(--primary-dark);
+      transform: translateY(-3px);
+    }
+    
+    /* Tooltip for theme toggle */
+    .tooltip {
+      position: relative;
+    }
+    
+    .tooltip-text {
+      position: absolute;
+      bottom: 100%;
+      left: 50%;
+      transform: translateX(-50%);
+      background-color: #374151;
+      color: white;
+      padding: 0.25rem 0.5rem;
+      border-radius: 0.25rem;
+      font-size: 0.75rem;
+      white-space: nowrap;
+      opacity: 0;
+      visibility: hidden;
+      transition: all 0.2s;
+      margin-bottom: 5px;
+    }
+    
+    .tooltip:hover .tooltip-text {
+      opacity: 1;
+      visibility: visible;
+    }
+    
+    /* Responsive Adjustments */
+    @media (max-width: 768px) {
+      .hero-text h1 {
+        font-size: 2.5rem;
+        line-height: 1.2;
+      }
+      
+      .projetos-container {
+        padding: 20px 10px;
+      }
+      
+      .carousel-slide {
+        height: 300px;
+      }
+    }
+    
+    /* Animations */
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+    
+    @keyframes slideInLeft {
+      from { transform: translateX(-50px); opacity: 0; }
+      to { transform: translateX(0); opacity: 1; }
+    }
+    
+    @keyframes slideInRight {
+      from { transform: translateX(50px); opacity: 0; }
+      to { transform: translateX(0); opacity: 1; }
+    }
+    
+    .animate-slide-in-left {
+      animation: slideInLeft 0.8s ease-out;
+    }
+    
+    .animate-slide-in-right {
+      animation: slideInRight 0.8s ease-out;
+    }
+  </style>
+</head>
+
+<body class="bg-gray-50 dark:bg-gray-900 text-gray-800 dark:text-gray-200">
+  <!-- Back to Top Button -->
+  <div id="back-to-top" class="back-to-top">
+    <i class="fas fa-arrow-up"></i>
+  </div>
+
+  <!-- Navegação -->
+  <nav id="navbar">
+    <div class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
+      <a href="#hero" class="flex items-center space-x-3 rtl:space-x-reverse">
+        <img src="bard-line.svg" class="h-8 logo-svg" alt="Logo">
+        <span class="self-center text-xl font-semibold whitespace-nowrap dark:text-white">Emilly Fernandes</span>
+      </a>
+      
+      <div class="hidden w-full md:block md:w-auto" id="navbar-default">
+        <ul class="font-medium flex flex-col p-4 md:p-0 mt-4 border border-gray-100 rounded-lg md:flex-row md:space-x-8 rtl:space-x-reverse md:mt-0 md:border-0">
+          <li>
+            <a href="#hero" class="nav-link block py-2 px-3 text-gray-900 dark:text-white rounded md:hover:bg-transparent md:border-0 md:p-0 active">Início</a>
+          </li>
+          <li>
+            <a href="#certificacoes" class="nav-link block py-2 px-3 text-gray-900 dark:text-white rounded md:hover:bg-transparent md:border-0 md:p-0">Sobre</a>
+          </li>
+          <li>
+            <a href="#projetos" class="nav-link block py-2 px-3 text-gray-900 dark:text-white rounded md:hover:bg-transparent md:border-0 md:p-0">Projetos</a>
+          </li>
+          <li>
+            <a href="#contato" class="nav-link block py-2 px-3 text-gray-900 dark:text-white rounded md:hover:bg-transparent md:border-0 md:p-0">Contato</a>
+          </li>
+          <li>
+            <button id="theme-toggle" type="button" class="tooltip text-gray-500 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-700 focus:outline-none rounded-lg text-sm p-2.5">
+              <svg id="theme-toggle-dark-icon" class="hidden w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+                <path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z"></path>
+              </svg>
+              <svg id="theme-toggle-light-icon" class="hidden w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+                <path d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.706.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 6.464A1 1 0 106.465 5.05l-.708-.707a1 1 0 00-1.414 1.414l.707.707zm1.414 8.486l-.707.707a1 1 0 01-1.414-1.414l.707-.707a1 1 0 011.414 1.414zM4 11a1 1 0 100-2H3a1 1 0 000 2h1z" fill-rule="evenodd" clip-rule="evenodd"></path>
+              </svg>
+              <span class="tooltip-text">Alternar tema</span>
+            </button>
+          </li>
+        </ul>
+      </div>
+      
+      <div class="flex md:hidden items-center space-x-4">
+        <button id="theme-toggle-mobile" type="button" class="text-gray-500 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-700 focus:outline-none rounded-lg text-sm p-2.5">
+          <svg id="theme-toggle-dark-icon-mobile" class="hidden w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+            <path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z"></path>
+          </svg>
+          <svg id="theme-toggle-light-icon-mobile" class="hidden w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+            <path d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.706.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 6.464A1 1 0 106.465 5.05l-.708-.707a1 1 0 00-1.414 1.414l.707.707zm1.414 8.486l-.707.707a1 1 0 01-1.414-1.414l.707-.707a1 1 0 011.414 1.414zM4 11a1 1 0 100-2H3a1 1 0 000 2h1z" fill-rule="evenodd" clip-rule="evenodd"></path>
+          </svg>
+        </button>
+        
+        <button data-collapse-toggle="navbar-default" type="button" class="inline-flex items-center p-2 w-10 h-10 justify-center text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600">
+          <span class="sr-only">Abrir menu</span>
+          <svg class="w-5 h-5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 17 14">
+            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 1h15M1 7h15M1 13h15"/>
+          </svg>
+        </button>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Seção Hero -->
+  <section id="hero" class="animate-slide-in-left">
+    <div class="hero">
+      <div class="hero-text">
+        <h1 class="mb-4 text-4xl font-extrabold leading-tight tracking-tight text-gray-900 dark:text-white md:text-5xl lg:text-6xl">
+          Olá, eu sou <span class="text-transparent bg-clip-text bg-gradient-to-r from-sky-400 to-emerald-600">Emilly Fernandes</span>
+        </h1>
+        <p class="text-lg font-normal text-gray-600 lg:text-xl dark:text-gray-300 mb-8">
+          Estudante de Desenvolvimento de Sistemas apaixonada por criar soluções digitais inovadoras que resolvem problemas reais.
+        </p>
+        <div class="flex flex-wrap gap-4">
+          <a href="#contato" class="inline-flex items-center justify-center px-6 py-3 text-base font-medium text-center text-white bg-gradient-to-r from-sky-500 to-emerald-600 rounded-lg hover:from-sky-600 hover:to-emerald-700 focus:ring-4 focus:outline-none focus:ring-sky-300 dark:focus:ring-sky-800 transition-all duration-300 transform hover:scale-105 shadow-lg">
+            Entre em Contato
+            <svg class="w-3.5 h-3.5 ms-2 rtl:rotate-180" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 10">
+              <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 5h12m0 0L9 1m4 4L9 9"/>
+            </svg>
+          </a>
+          <a href="#projetos" class="inline-flex items-center justify-center px-6 py-3 text-base font-medium text-center text-gray-900 dark:text-white border border-gray-300 dark:border-gray-600 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 focus:ring-4 focus:outline-none focus:ring-gray-200 transition-all duration-300">
+            Ver Projetos
+          </a>
+        </div>
+      </div>
+      
+      <!-- SVG do computador em azul -->
+      <div class="hero-image">
+        <svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" viewBox="0 0 24 24" fill="#3b82f6" class="text-blue-500 dark:text-blue-400">
+          <path d="M20 3H4c-1.103 0-2 .897-2 2v11c0 1.103.897 2 2 2h7v2H8v2h8v-2h-3v-2h7c1.103 0 2-.897 2-2V5c0-1.103-.897-2-2-2zM4 14V5h16l.002 9H4z"></path>
+        </svg>
+      </div>
+    </div>
+  </section>
+
+  <!-- Seção Certificações -->
+  <section id="certificacoes" class="py-16 px-4 bg-white dark:bg-gray-800 animate-slide-in-right">
+    <div class="max-w-6xl mx-auto">
+      <h2 class="section-heading text-3xl font-bold dark:text-white text-center">Sobre Mim</h2>
+      
+      <div class="max-w-3xl mx-auto mb-12 text-center">
+        <p class="text-lg text-gray-600 dark:text-gray-300 mb-6">
+          Atualmente sou estudante de Desenvolvimento de Sistemas na EEEP Maria Célia Pinheiro Falcão 
+          com habilidades tanto em Back-end quanto em Front-end. Tenho grande interesse em atuar na área de 
+          desenvolvimento full-stack, aplicando meus conhecimentos técnicos e minha paixão por criar soluções 
+          inovadoras que resolvam problemas reais.
+        </p>
+
+        <!-- Seção Habilidades -->
+<div class="mb-12">
+  <h3 class="text-xl font-semibold text-gray-800 dark:text-white mb-6 text-center">Habilidades Técnicas</h3>
+  <div class="flex flex-wrap justify-center gap-6">
+    <!-- HTML -->
+    <div class="flex flex-col items-center group">
+      <div class="w-16 h-16 bg-white dark:bg-gray-700 rounded-full flex items-center justify-center shadow-md group-hover:shadow-lg transition-all duration-300">
+        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg" alt="HTML" class="w-10 h-10">
+      </div>
+      <span class="mt-2 text-sm font-medium text-gray-700 dark:text-gray-300">HTML</span>
+    </div>
+    
+    <!-- CSS -->
+    <div class="flex flex-col items-center group">
+      <div class="w-16 h-16 bg-white dark:bg-gray-700 rounded-full flex items-center justify-center shadow-md group-hover:shadow-lg transition-all duration-300">
+        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original.svg" alt="CSS" class="w-10 h-10">
+      </div>
+      <span class="mt-2 text-sm font-medium text-gray-700 dark:text-gray-300">CSS</span>
+    </div>
+    
+    <!-- JavaScript -->
+    <div class="flex flex-col items-center group">
+      <div class="w-16 h-16 bg-white dark:bg-gray-700 rounded-full flex items-center justify-center shadow-md group-hover:shadow-lg transition-all duration-300">
+        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg" alt="JavaScript" class="w-10 h-10">
+      </div>
+      <span class="mt-2 text-sm font-medium text-gray-700 dark:text-gray-300">JavaScript</span>
+    </div>
+    
+    <!-- Python -->
+    <div class="flex flex-col items-center group">
+      <div class="w-16 h-16 bg-white dark:bg-gray-700 rounded-full flex items-center justify-center shadow-md group-hover:shadow-lg transition-all duration-300">
+        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg" alt="Python" class="w-10 h-10">
+      </div>
+      <span class="mt-2 text-sm font-medium text-gray-700 dark:text-gray-300">Python</span>
+    </div>
+    
+    <!-- SQL -->
+    <div class="flex flex-col items-center group">
+      <div class="w-16 h-16 bg-white dark:bg-gray-700 rounded-full flex items-center justify-center shadow-md group-hover:shadow-lg transition-all duration-300">
+        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mysql/mysql-original.svg" alt="SQL" class="w-10 h-10">
+      </div>
+      <span class="mt-2 text-sm font-medium text-gray-700 dark:text-gray-300">SQL</span>
+    </div>
+  </div>
+</div>
+
+        <p class="text-lg text-gray-600 dark:text-gray-300">
+          Estas certificações comprovam minha dedicação ao aprendizado contínuo na área de tecnologia.
+        </p>
+      </div>
+      
+      <div id="default-carousel" class="relative">
+        <div class="carousel-container">
+          <!-- Itens do carrossel -->
+          <div class="carousel-slide active" data-carousel-item>
+            <img src="AWS.png" alt="Certificação AWS" class="w-full h-full object-contain">
+          </div>
+          <div class="carousel-slide" data-carousel-item>
+            <img src="bradesco.jpg" alt="Certificação Bradesco" class="w-full h-full object-contain">
+          </div>
+          <div class="carousel-slide" data-carousel-item>
+            <img src="bradesco1.jpg" alt="Outra Certificação Bradesco" class="w-full h-full object-contain">
+          </div>
+          <div class="carousel-slide" data-carousel-item>
+            <img src="eretec.png" alt="Certificação Eretec" class="w-full h-full object-contain">
+          </div>
+          <div class="carousel-slide" data-carousel-item>
+            <img src="jogos.png" alt="Certificação Fabrica de Programadores" class="w-full h-full object-contain">
+          </div>
+        </div>
+        
+        <!-- Controles -->
+        <button type="button" class="carousel-control carousel-prev" data-carousel-prev>
+          <svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 6 10">
+            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 1 1 5l4 4"/>
+          </svg>
+          <span class="sr-only">Anterior</span>
+        </button>
+        
+        <button type="button" class="carousel-control carousel-next" data-carousel-next>
+          <svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 6 10">
+            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 9 4-4-4-4"/>
+          </svg>
+          <span class="sr-only">Próximo</span>
+        </button>
+        
+        <!-- Indicadores -->
+        <div class="carousel-indicators">
+          <button type="button" class="carousel-indicator active" data-carousel-slide-to="0"></button>
+          <button type="button" class="carousel-indicator" data-carousel-slide-to="1"></button>
+          <button type="button" class="carousel-indicator" data-carousel-slide-to="2"></button>
+          <button type="button" class="carousel-indicator" data-carousel-slide-to="3"></button>
+          <button type="button" class="carousel-indicator" data-carousel-slide-to="4"></button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- Seção Projetos -->
+  <section id="projetos" class="py-16 px-4">
+    <div class="max-w-6xl mx-auto">
+      <h2 class="section-heading text-3xl font-bold dark:text-white text-center">Meus Projetos</h2>
+      
+      <div class="projetos-container">
+        <div class="projeto-card">
+          <a href="https://github.com/emillyfernb/SISEP" target="_blank" class="block overflow-hidden">
+            <img src="SISEP.svg" alt="Sistema Integrado de Seleção de EEEP">
+          </a>
+          <div class="projeto-content">
+            <h5 class="projeto-title">SISEP</h5>
+            <p class="projeto-desc">Sistema Integrado de Seleção de EEEP facilita a inscrição e seleção de estudantes para cursos técnicos, garantindo um processo organizado e transparente.</p>
+            <a href="https://github.com/emillyfernb/SISEP" target="_blank" class="projeto-link">
+              Ver projeto <i class="fas fa-external-link-alt"></i>
+            </a>
+          </div>
+        </div>
+
+        <div class="projeto-card">
+          <a href="https://github.com/emillyfernb/Piano-Tutor" target="_blank" class="block overflow-hidden">
+            <img src="Piano Tutor.svg" alt="Piano Tutor">
+          </a>
+          <div class="projeto-content">
+            <h5 class="projeto-title">Piano Tutor</h5>
+            <p class="projeto-desc">Projeto de Arduino que utiliza LEDs para indicar as teclas a serem tocadas, ajudando iniciantes no aprendizado do piano de forma visual e interativa.</p>
+            <a href="https://github.com/emillyfernb/Piano-Tutor" target="_blank" class="projeto-link">
+              Ver projeto <i class="fas fa-external-link-alt"></i>
+            </a>
+          </div>
+        </div>
+
+        <div class="projeto-card">
+          <a href="https://github.com/emillyfernb/ConectaLocal" target="_blank" class="block overflow-hidden">
+            <img src="ConectaLocal.svg" alt="ConectaLocal">
+          </a>
+          <div class="projeto-content">
+            <h5 class="projeto-title">ConectaLocal</h5>
+            <p class="projeto-desc">Site que centraliza promoções de mercados, oferecendo um único lugar para encontrar ofertas e descontos em produtos de diversas lojas.</p>
+            <a href="https://github.com/emillyfernb/ConectaLocal" target="_blank" class="projeto-link">
+              Ver projeto <i class="fas fa-external-link-alt"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- Seção Contato -->
+  <section id="contato" class="py-16 px-4 bg-white dark:bg-gray-800">
+    <div class="max-w-4xl mx-auto">
+      <h2 class="section-heading text-3xl font-bold dark:text-white text-center">Entre em Contato</h2>
+      
+      <div class="grid md:grid-cols-2 gap-8 mt-12">
+        <!-- Formulário -->
+        <div class="contact-form">
+          <form id="contact-form" class="space-y-6">
+            <div>
+              <label for="name" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">Nome</label>
+              <input 
+                type="text" 
+                id="name" 
+                name="name" 
+                required
+                class="form-input"
+                placeholder="Seu nome completo"
+              >
+            </div>
+            
+            <div>
+              <label for="email" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">E-mail</label>
+              <input 
+                type="email" 
+                id="email" 
+                name="email" 
+                required
+                class="form-input"
+                placeholder="seu@email.com"
+              >
+            </div>
+            
+            <div>
+              <label for="message" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">Mensagem</label>
+              <textarea 
+                id="message" 
+                name="message" 
+                rows="5" 
+                required
+                class="form-input"
+                placeholder="Escreva sua mensagem aqui..."
+              ></textarea>
+            </div>
+            
+            <button type="submit" class="submit-btn w-full">
+              Enviar Mensagem
+            </button>
+          </form>
+        </div>
+        
+        <!-- Informações de Contato -->
+        <div class="flex flex-col justify-center">
+          <div class="space-y-6">
+            <div class="flex items-start space-x-4">
+              <div class="flex-shrink-0 bg-blue-100 dark:bg-blue-900 p-3 rounded-full">
+                <i class="fas fa-envelope text-blue-600 dark:text-blue-300"></i>
+              </div>
+              <div>
+                <h3 class="text-lg font-semibold text-gray-900 dark:text-white">E-mail</h3>
+                <p class="text-gray-600 dark:text-gray-300">emilly.vitoria.bessa27@gmail.com</p>
+              </div>
+            </div>
+            
+            <div class="flex items-start space-x-4">
+              <div class="flex-shrink-0 bg-green-100 dark:bg-green-900 p-3 rounded-full">
+                <i class="fas fa-phone-alt text-green-600 dark:text-green-300"></i>
+              </div>
+              <div>
+                <h3 class="text-lg font-semibold text-gray-900 dark:text-white">Telefone</h3>
+                <p class="text-gray-600 dark:text-gray-300">(85) 9797-5799</p>
+              </div>
+            </div>
+            
+            <div class="flex items-start space-x-4">
+              <div class="flex-shrink-0 bg-purple-100 dark:bg-purple-900 p-3 rounded-full">
+                <i class="fas fa-map-marker-alt text-purple-600 dark:text-purple-300"></i>
+              </div>
+              <div>
+                <h3 class="text-lg font-semibold text-gray-900 dark:text-white">Localização</h3>
+                <p class="text-gray-600 dark:text-gray-300">Rio Grande do Norte, Brasil</p>
+              </div>
+            </div>
+          </div>
+          
+          <!-- Redes Sociais -->
+          <div class="mt-8">
+            <h3 class="text-lg font-semibold text-gray-900 dark:text-white mb-4">Redes Sociais</h3>
+            <div class="flex space-x-4">
+              <a href="https://www.linkedin.com/in/emilly-fernandes-4599b029a/" target="_blank" class="social-icon linkedin">
+                <i class="fab fa-linkedin-in"></i>
+              </a>
+              <a href="https://github.com/emillyfernb" target="_blank" class="social-icon github">
+                <i class="fab fa-github"></i>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Rodapé -->
+  <footer class="py-8 bg-gray-100 dark:bg-gray-900">
+    <div class="max-w-screen-xl mx-auto px-4 text-center">
+      <div class="flex flex-col items-center">
+        <img src="bard-line.svg" class="h-10 mb-4" alt="Logo">
+        <p class="text-gray-700 dark:text-gray-300 mb-4">© 2025 Emilly Fernandes. Todos os direitos reservados.</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script>
+    // Tema dark/light
+    function setupThemeToggle(buttonId, darkIconId, lightIconId) {
+      const themeToggleBtn = document.getElementById(buttonId);
+      const themeToggleDarkIcon = document.getElementById(darkIconId);
+      const themeToggleLightIcon = document.getElementById(lightIconId);
+
+      if (localStorage.getItem('color-theme') === 'dark' || (!('color-theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+        themeToggleLightIcon.classList.remove('hidden');
+        document.documentElement.classList.add('dark');
+      } else {
+        themeToggleDarkIcon.classList.remove('hidden');
+        document.documentElement.classList.remove('dark');
+      }
+
+      themeToggleBtn.addEventListener('click', function() {
+        themeToggleDarkIcon.classList.toggle('hidden');
+        themeToggleLightIcon.classList.toggle('hidden');
+
+        if (localStorage.getItem('color-theme')) {
+          if (localStorage.getItem('color-theme') === 'light') {
+            document.documentElement.classList.add('dark');
+            localStorage.setItem('color-theme', 'dark');
+          } else {
+            document.documentElement.classList.remove('dark');
+            localStorage.setItem('color-theme', 'light');
+          }
+        } else {
+          if (document.documentElement.classList.contains('dark')) {
+            document.documentElement.classList.remove('dark');
+            localStorage.setItem('color-theme', 'light');
+          } else {
+            document.documentElement.classList.add('dark');
+            localStorage.setItem('color-theme', 'dark');
+          }
+        }
+      });
+    }
+
+    // Configurar ambos os botões de tema
+    setupThemeToggle('theme-toggle', 'theme-toggle-dark-icon', 'theme-toggle-light-icon');
+    setupThemeToggle('theme-toggle-mobile', 'theme-toggle-dark-icon-mobile', 'theme-toggle-light-icon-mobile');
+
+    // Script para controle do carrossel
+    document.addEventListener('DOMContentLoaded', function() {
+      const carousel = document.querySelector('#default-carousel');
+      const slides = carousel.querySelectorAll('[data-carousel-item]');
+      const indicators = carousel.querySelectorAll('[data-carousel-slide-to]');
+      let currentIndex = 0;
+      let interval;
+
+      function showSlide(index) {
+        // Esconder todos os slides
+        slides.forEach(slide => {
+          slide.classList.remove('active');
+          slide.classList.add('hidden');
+        });
+        
+        // Ativar slide atual
+        slides[index].classList.add('active');
+        slides[index].classList.remove('hidden');
+        
+        // Atualizar indicadores
+        indicators.forEach((indicator, i) => {
+          indicator.classList.toggle('active', i === index);
+        });
+        
+        currentIndex = index;
+        
+        // Resetar intervalo
+        resetInterval();
+      }
+
+      function nextSlide() {
+        showSlide((currentIndex + 1) % slides.length);
+      }
+
+      function prevSlide() {
+        showSlide((currentIndex - 1 + slides.length) % slides.length);
+      }
+
+      function resetInterval() {
+        clearInterval(interval);
+        interval = setInterval(nextSlide, 5000);
+      }
+
+      // Inicialização
+      showSlide(0);
+      
+      // Event listeners para controles
+      document.querySelector('[data-carousel-prev]').addEventListener('click', () => {
+        prevSlide();
+      });
+      
+      document.querySelector('[data-carousel-next]').addEventListener('click', () => {
+        nextSlide();
+      });
+      
+      // Event listeners para indicadores
+      indicators.forEach((indicator, index) => {
+        indicator.addEventListener('click', () => showSlide(index));
+      });
+      
+      // Pausar carrossel quando o mouse estiver sobre ele
+      carousel.addEventListener('mouseenter', () => {
+        clearInterval(interval);
+      });
+      
+      carousel.addEventListener('mouseleave', resetInterval);
+    });
+
+    // Script para envio do formulário
+    document.getElementById('contact-form').addEventListener('submit', function(e) {
+      e.preventDefault();
+      
+      const formData = {
+        name: document.getElementById('name').value,
+        email: document.getElementById('email').value,
+        message: document.getElementById('message').value
+      };
+      
+      // Aqui você pode adicionar o código para enviar o formulário
+      console.log('Dados do formulário:', formData);
+      
+      // Mostrar mensagem de sucesso
+      const submitBtn = this.querySelector('button[type="submit"]');
+      const originalText = submitBtn.textContent;
+      
+      submitBtn.innerHTML = '<i class="fas fa-check mr-2"></i> Mensagem Enviada';
+      submitBtn.classList.remove('from-sky-500', 'to-emerald-600');
+      submitBtn.classList.add('bg-green-500');
+      
+      // Resetar formulário
+      this.reset();
+      
+      // Voltar ao estado original após 3 segundos
+      setTimeout(() => {
+        submitBtn.textContent = originalText;
+        submitBtn.classList.remove('bg-green-500');
+        submitBtn.classList.add('from-sky-500', 'to-emerald-600');
+      }, 3000);
+    });
+
+    // Navbar scroll effect
+    window.addEventListener('scroll', function() {
+      const navbar = document.getElementById('navbar');
+      if (window.scrollY > 50) {
+        navbar.classList.add('scrolled');
+      } else {
+        navbar.classList.remove('scrolled');
+      }
+      
+      // Back to top button
+      const backToTopBtn = document.getElementById('back-to-top');
+      if (window.scrollY > 300) {
+        backToTopBtn.classList.add('visible');
+      } else {
+        backToTopBtn.classList.remove('visible');
+      }
+    });
+
+    // Back to top button
+    document.getElementById('back-to-top').addEventListener('click', function() {
+      window.scrollTo({
+        top: 0,
+        behavior: 'smooth'
+      });
+    });
+
+    // Smooth scrolling for anchor links
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function(e) {
+        e.preventDefault();
+        
+        const targetId = this.getAttribute('href');
+        if (targetId === '#') return;
+        
+        const targetElement = document.querySelector(targetId);
+        if (targetElement) {
+          window.scrollTo({
+            top: targetElement.offsetTop - 70,
+            behavior: 'smooth'
+          });
+          
+          // Ativar link na navbar
+          document.querySelectorAll('.nav-link').forEach(link => {
+            link.classList.remove('active');
+          });
+          this.classList.add('active');
+        }
+      });
+    });
+
+    // Mobile menu toggle
+    const mobileMenuButton = document.querySelector('[data-collapse-toggle="navbar-default"]');
+    const mobileMenu = document.getElementById('navbar-default');
+    
+    mobileMenuButton.addEventListener('click', function() {
+      mobileMenu.classList.toggle('hidden');
+    });
+  </script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.3.0/flowbite.min.js"></script>
+</body>
+</html>
